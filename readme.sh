@@ -6,11 +6,11 @@
 # Usage: ./readme.sh <ip-address>
 #
 # Example: 
-#   ./readme.sh 192.168.1.100
+#   ./readme.sh domain.local
 #
 # The script will:
 # 1. Map the provided IP address to 127.0.0.1
-# 2. Add jayro.local IPv6 mapping
+#
 # 
 # Note: Requires administrative/sudo privileges to modify hosts file
 #
@@ -35,7 +35,7 @@ if [ "$(uname -s)" = "Darwin" ] || [ "$(uname -s)" = "Linux" ]; then
 elif [ "$OS" = "Windows_NT" ]; then
     # Windows systems
     powershell -Command "Add-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Value '127.0.0.1    $ip' -Force"
-    powershell -Command "Add-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Value '::1    jayro.local' -Force"
+    powershell -Command "Add-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Value '::1    $ip' -Force"
     echo "Hosts file updated successfully"
 else
     echo "Unsupported operating system"
