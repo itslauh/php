@@ -32,11 +32,13 @@ if [ "$(uname -s)" = "Darwin" ] || [ "$(uname -s)" = "Linux" ]; then
     sudo sh -c "echo '127.0.0.1    $ip' >> /etc/hosts"
     sudo sh -c "echo '::1    $ip' >> /etc/hosts"
     echo "Hosts file updated successfully"
+    echo "change ./nginx/default.conf:3 to $ip"
 elif [ "$OS" = "Windows_NT" ]; then
     # Windows systems
     powershell -Command "Add-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Value '127.0.0.1    $ip' -Force"
     powershell -Command "Add-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Value '::1    $ip' -Force"
     echo "Hosts file updated successfully"
+    echo "change ./nginx/default.conf:3 to $ip"
 else
     echo "Unsupported operating system"
     exit 1
